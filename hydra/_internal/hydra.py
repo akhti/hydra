@@ -69,6 +69,7 @@ class Hydra:
         search_path = ConfigSearchPath()
         search_path.append("hydra", "pkg://hydra.conf")
         search_path.append("main", abs_config_dir)
+        search_path.append("common", abs_config_dir + '/../common')
 
         search_path_plugins = Plugins.discover(SearchPathPlugin)
         for spp in search_path_plugins:
@@ -257,7 +258,7 @@ class Hydra:
 
     def _load_config(self, overrides):
         cfg = self.config_loader.load_configuration(overrides)
-        configure_log(cfg.hydra.hydra_logging, self.verbose)
+        #configure_log(cfg.hydra.hydra_logging, self.verbose)
         global log
         log = logging.getLogger(__name__)
         self._print_debug_info()

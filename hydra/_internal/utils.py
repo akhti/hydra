@@ -10,6 +10,9 @@ from argparse import RawTextHelpFormatter
 def run_hydra(args, task_function, config_path, strict):
     stack = inspect.stack()
     frame = stack[2]
+    # Hack:
+    frame = stack[3]
+
 
     calling_file = None
     calling__module = None

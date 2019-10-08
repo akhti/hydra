@@ -132,7 +132,7 @@ class ConfigLoader:
                 key = next(iter(d.keys()))
                 key_to_idx[key] = idx
         for override in copy.deepcopy(overrides):
-            key, value = override.split("=")
+            key, value = override.split("=", 1)
             if key in key_to_idx:
                 # Do not add sweep configs into defaults, those will be added to the sweep config
                 # after the list is broken into items
@@ -148,7 +148,7 @@ class ConfigLoader:
     def _apply_free_defaults(self, defaults, overrides):
         consumed = []
         for override in overrides:
-            key, value = override.split("=")
+            key, value = override.split("=", 1)
             if self.exists_in_search_path(key):
                 # Do not add sweep configs into defaults, those will be added to the defaults
                 # during sweep when after list is broken into items

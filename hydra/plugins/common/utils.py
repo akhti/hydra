@@ -15,6 +15,7 @@ log = logging.getLogger(__name__)
 
 
 def configure_log(log_config, verbose=None):
+    return
     if log_config is not None:
         conf = log_config.to_container(resolve=True)
         logging.config.dictConfig(conf)
@@ -76,7 +77,7 @@ def run_job(config, task_function, verbose, job_dir_key, job_subdir_key):
         if not os.path.exists(working_dir):
             os.makedirs(working_dir)
         os.chdir(working_dir)
-        configure_log(config.hydra.job_logging, verbose)
+        # configure_log(config.hydra.job_logging, verbose)
 
         save_config(task_cfg, "config.yaml")
         save_config(hydra_cfg, "hydra.yaml")
